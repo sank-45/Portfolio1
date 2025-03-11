@@ -1,0 +1,129 @@
+// @import '../../Styles/Mixins.scss';
+@import '../../Styles/Variables.scss';
+@import '../../Styles/Mixins.scss';
+
+.about {
+    padding: 8rem 0;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+
+    &_container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+
+        @include respond(tab-port) {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+        }
+    }
+
+    &_content {
+        flex: 1;
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #facc15;
+            animation: fadeInDown 1s ease;
+
+            @include respond(tab-port) {
+                font-size: 2.5rem;
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--main-text-color);
+            animation: fadeInUp 1s ease;
+
+            @include respond(tab-port) {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &_button {
+        padding: 0.8rem 2rem;
+        background-color: var(--primary-color);
+        color: var(--main-white);
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        animation: fadeInUp 1.5s ease;
+    
+        &:hover {
+            background-color: darken(#007bff, 10%); // Replace with a static color
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        @include respond(tab-port) {
+            width: 100%;
+        }
+    }
+
+    &_image {
+        flex: 1;
+        text-align: center;
+        animation: fadeInRight 1s ease;
+
+        .profile_img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            @include respond(tab-port) {
+                max-width: 80%;
+            }
+        }
+    }
+}
+
+// Keyframe Animations
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

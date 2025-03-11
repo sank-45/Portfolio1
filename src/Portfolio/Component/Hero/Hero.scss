@@ -1,0 +1,71 @@
+@import '../../Styles/Mixins.scss';
+
+.hero {
+    margin-top: 4.5rem;
+    height: 100vh; // Full screen height
+    width: 100%; // Full screen width
+    background-image: url("../../Component/Assets/hero-bg.jpg");
+    background-size: cover; // Ensure the image covers the entire screen
+    background-position: center; // Center the image
+    background-repeat: no-repeat; // Prevent the image from repeating
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 4rem;
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+
+    &_left {
+        padding-block: 5rem;
+    }
+
+    h3 {
+        color: var(--extra-color);
+        font-size: 2rem;
+        font-weight: 300;
+     
+        
+    }
+
+    h1 {
+        font-size: 7.5rem;
+        font-weight: 700;
+        line-height: 1;
+
+        @include respond(phone) {
+            font-size: 5rem;
+        }
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: var(--m-silver);
+        margin-block: 2rem;
+    }
+
+    &_right {
+        overflow: hidden;
+        position: relative;
+
+        @include respond(tab-port) {
+            display: none;
+        }
+    }
+
+    &_right-img {
+        display: grid;
+    }
+
+    &__right-img img {
+        width: 130%;
+        place-self: center;
+    }
+}

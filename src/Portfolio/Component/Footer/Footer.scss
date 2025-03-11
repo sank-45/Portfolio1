@@ -1,0 +1,78 @@
+.footer {
+    background: linear-gradient(135deg, #2c3e50, #34495e); // Gradient background
+    color: #fff;
+    padding: 1rem 0; // Reduced padding for smaller height
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); // Subtle top border
+
+    .footer_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem; // Reduced gap for compactness
+
+        .footer_logo {
+            p {
+                font-size: 0.8rem; // Smaller font size for tagline
+                color: #ecf0f1;
+                margin: 0;
+            }
+        }
+
+        .footer_social {
+            display: flex;
+            gap: 1.5rem;
+            .social-icon {
+                color: #facc15;
+                font-size: 1.5rem; // Increased icon size
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: #3498db; // Icon hover color
+                    transform: translateY(-3px); // Icon hover animation
+                }
+            }
+        }
+    }
+
+    .footer_bottom {
+        margin-top: 0.8rem; // Reduced margin for compactness
+        padding-top: 0.0rem; // Reduced padding for compactness
+        border-top: 1px solid rgba(255, 255, 255, 0.1); // Subtle top border
+        p {
+            margin: 0;
+            font-size: 0.7rem; // Smaller font size for copyright
+            color: #bdc3c7;
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .footer {
+        padding: 0.8rem 0; // Reduced padding for mobile
+
+        .footer_container {
+            gap: 0.6rem; // Reduced gap for mobile
+
+            .footer_logo {
+                p {
+                    font-size: 0.7rem; // Smaller font size for mobile
+                }
+            }
+
+            .footer_social {
+                gap: 1rem; // Reduced gap for mobile
+                .social-icon {
+                    font-size: 1.3rem; // Slightly smaller icons for mobile
+                }
+            }
+        }
+
+        .footer_bottom {
+            p {
+                font-size: 0.6rem; // Smaller font size for mobile
+            }
+        }
+    }
+}
