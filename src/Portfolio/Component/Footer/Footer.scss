@@ -23,12 +23,12 @@
             display: flex;
             gap: 1.5rem;
             .social-icon {
-                color: #facc15;
+                 color: #3498db;
                 font-size: 1.5rem; // Increased icon size
                 transition: all 0.3s ease;
 
                 &:hover {
-                    color: #3498db; // Icon hover color
+                    color: #f57261; // Icon hover color
                     transform: translateY(-3px); // Icon hover animation
                 }
             }
@@ -42,7 +42,7 @@
         p {
             margin: 0;
             font-size: 0.7rem; // Smaller font size for copyright
-            color: #bdc3c7;
+            color: #c7bdbd;
         }
     }
 }

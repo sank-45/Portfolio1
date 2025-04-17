@@ -1,5 +1,5 @@
 import './About.scss';
-import ProfileImage from '../../Component/Assets/about.jpg'; // Replace with your image
+import ProfileImage from '../../Component/Assets/Hero112-bg.png'; // Replace with your image
 
 const About = () => {
     return (
@@ -19,9 +19,13 @@ const About = () => {
                         grown into a full-fledged career. I enjoy solving complex problems and turning ideas into
                         reality through code.
                     </p>
-                    <button className="about_button">
-                        <a href='Blue_and_White_Professional_Resume.pdf' download="Sankalp_Patil_CV">Download Resume</a>
+
+                    <a href="/Sankalp Patil_CV.pdf" download>
+                    <button className="button button--pan">
+                    <span>Download CV</span>
                     </button>
+                    </a>
+
                 </div>
                 <div className="about_image">
                     <img src={ProfileImage} alt="Profile" className="profile_img" />

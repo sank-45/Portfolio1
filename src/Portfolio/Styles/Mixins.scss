@@ -1,20 +1,19 @@
-@mixin respond($breakpoint){
-    @if $breakpoint  == phone {
-      @media screen and (max-width: 37.5em){
+// Define common breakpoints
+$breakpoints: (
+  "phone": 480px,
+  "tab-port": 768px,
+  "tab-land": 1024px,
+  "desktop": 1200px
+);
 
-          @content;
-        }
+// Usage: @include respond(tab-port) { ... }
+@mixin respond($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $size: map-get($breakpoints, $breakpoint);
+    @media screen and (max-width: $size) {
+      @content;
     }
-    @if $breakpoint == tab-port{
-        @media screen and (max-width: 56.25em){
-
-          @content;  
-        }
-    }
-    @if $breakpoint == tab-land{
-        @media screen and (max-width: 75em){
-
-          @content;  
-        }
-    }
-} 
+  } @else {
+    @warn "No value found for `#{$breakpoint}` in the \$breakpoints map.";
+  }
+}

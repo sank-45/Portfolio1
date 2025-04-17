@@ -31,14 +31,15 @@ const Navbar = () => {
                             <Link to="/projects">Projects</Link>
                         </li>
                         <li onClick={() => setShowNav(false)}>
-                            <Link to="/contact">Contact</Link>
+                            <Link to="/contact">Contact </Link>
                         </li>
                         
                     </ul>
 
                     <div className="navbar_phone">
+                        <h3 className='dash'>|</h3>
                         <FaPhoneAlt />
-                        <span>+917249774554</span>
+                        <span>  +917249774554</span>
                     </div>
 
                     <div className="navbar_menu" onClick={() => setShowNav(!showNav)}>

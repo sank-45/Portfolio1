@@ -1,139 +1,138 @@
-    @import "../../Styles/Mixins.scss";
-
-    .navbar {
-        background-color: #070d1be6;
-        padding-block: 1.2rem;
-        position: fixed;
-        z-index: 900;
-        width: 100%;
-        top: 0;
-        left: 0;
-        transition: background-color 0.3s ease-in-out;
+@import "../../Styles/Mixins.scss";
+.navbar {
+    background-color: #070d1b;
+    padding: 0.6rem 0; // Smaller height
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  
+    &:hover {
+      background-color: rgba(7, 13, 27, 0.95);
+    }
+  
+    &_container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    &_logo img {
+      width: 55px; // Compact logo size
+      margin-right: 20px;
+    }
+  
+    &_links {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      font-size: xx-large;
+      padding: 1.5rem;
+      
+  
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
         
 
-        // Navbar hover effect
+  
+        @include respond(tab-port) {
+          flex-direction: column;
+          padding: 1rem;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: #070d1b;
+          padding: 1.5rem 2rem;
+          display: none;
+          gap: 1.5rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      }
+  
+      li {
+        list-style: none;
+      }
+  
+      a {
+        color: var(--main-white);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        position: relative;
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
+  
         &:hover {
-            background-color: rgba(7, 13, 27, 0.9);
+          color: #facc15;
         }
-
-        &_container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+  
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #facc15;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease-in-out;
         }
-
-        &_logo img {
-            width: 100%;
-            margin-right: 50px;
+  
+        &:hover::after {
+          transform: scaleX(1);
         }
-
-        &_links {
-            display: flex;
-            align-items: center;
-            margin-left: 160px;
-            margin-top: 1rem;
-
-            ul {
-                display: flex;
-                align-items: center;
-                gap: 3rem;
-
-                @include respond(tab-port) {
-                    flex-direction: column;
-                    gap: 1.2rem;
-                    align-items: flex-start;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    padding: 2rem;
-                    background-color: #070d1be6;
-                    width: 100%;
-                    border-top: 1px solid var(--m-silver);
-                    display: none;
-                }
-            }
-
-            li {
-                list-style: none;
-            }
-
-            a {
-                text-transform: uppercase;
-                color: var(--main-white);
-                font-weight: 700;
-                font-family: "Roboto", sans-serif;
-                transition: all 0.3s ease-in-out;
-                margin-right: 90px;
-                margin-left: 10px;
-                position: relative;
-                padding-bottom: 5px;
-
-                // Hover effect: text color change & underline animation
-                &:hover {
-                    color: #facc15; // Yellow on hover
-                }
-
-                &::after {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 2px;
-                    background-color: #facc15;
-                    transform: scaleX(0);
-                    transform-origin: left;
-                    transition: transform 0.3s ease-in-out;
-                }
-
-                &:hover::after {
-                    transform: scaleX(1);
-                }
-
-                @include respond(tab-port) {
-                    font-weight: 1000;
-                    text-transform: capitalize;
-                    color: var(--m-silver);
-                }
-            }
+  
+        @include respond(tab-port) {
+          color: var(--m-silver);
+          font-size: 1.1rem;
         }
-
-        &_phone {
-            padding-left: 3rem;
-            margin-left: 3.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            position: relative;
-
-            svg {
-                color: white;
-                margin-right: 15px;
-                margin-bottom: 2rem;
-            }
-
-            span {
-                color: #facc15;
-                margin-bottom: 2rem;
-            }
-
-            @include respond(tab-port) {
-                display: none;
-            }
-        }
-
-        &_menu {
-            display: none;
-
-            @include respond(tab-port) {
-                display: inline-block;
-                font-size: 2.3rem;
-                color: var(--m-silver);
-                cursor: pointer;
-            }
-        }
-
-        .show {
-            display: flex !important;
-        }
+      }
     }
+     
+    .dash{
+       margin-right: 2rem;
+    }
+
+    &_phone {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #facc15;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-left: 1.5rem;
+      padding: auto;
+  
+      svg {
+        font-size: 1rem;
+        margin-bottom: 2px;
+      }
+  
+      @include respond(tab-port) {
+        display: none;
+      }
+    }
+  
+    &_menu {
+      display: none;
+  
+      @include respond(tab-port) {
+        display: block;
+        font-size: 2rem;
+        color: #facc15;
+        cursor: pointer;
+      }
+    }
+  
+    .show {
+      display: flex !important;
+    }
+  }
+  

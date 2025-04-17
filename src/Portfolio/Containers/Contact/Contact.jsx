@@ -1,77 +1,125 @@
-import './Contact.scss';
-import Img from "../../Component/Assets/email.png";
-import Img1 from "../../Component/Assets/phone.png";
-import Img2 from "../../Component/Assets/location.png";
-import {useForm} from "react-hook-form";
+import React, { useState, useRef } from "react";
+import "./Contact.scss";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-    // const{
-    //     register,
-    //     handleSubmit,
-    //     watch,
-    //     formState:{errors},
-    // }=useForm(); 
+  const formRef = useRef();
 
-    // function onSubmit(data){
-    //     console.log("Submitting the Form",data)
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    // }
-    return (
-        <section className="contact">
-            <div className="contact_container wrapper">
-                <h1>Just Say Hello</h1>
-                <p>Feel free to reach out to me for any inquiries or collaborations.</p>
+    emailjs
+      .sendForm(
+        'service_mzl2fc8',
+        'template_docr8l6',
+        formRef.current,
+        '5uMJDE1rEuEhPtPnn'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setSent(true);
+          setTimeout(() => {
+            setSent(false);
+            setFormData({ name: '', email: '', message: '' });
+          }, 3000);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
-                <div className="contact_content">
-                    {/* Contact Form */}
-                    <form className="contact_form" > 
-                        {/* onSubmit={handleSubmit(onSubmit)} */}
-                        <div className="form_group">
-                            <input type="text" placeholder="Your Name" required />
-                        </div>
-                        <div className="form_group">
-                            <input type="email" placeholder="Your Email" required />
-                        </div>
-                        <div className="form_group">
-                            <input type="text" placeholder="Your Subject" required />
-                        </div>
-                        <div className="form_group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" className="contact_button">
-                            Send Message
-                        </button>
-                    </form>
+  return (
+    <section className="contact" id="contact">
+      <div className="contact_container">
+        <h1>Contact Me</h1>
+        <hr className="section-divider" />
+        <p>Have a question or want to work together? Reach out!</p>
 
-                    {/* Contact Info */}
-                    <div className="contact_info">
-                        <h2>Contact Info :</h2>
-                        {/* <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ligula nulla
-                            tincidunt id faucibus sed suscipit feugiat.
-                        </p> */}
-                        <ul>
-                            <li>
-                                <img src={Img} alt="email" />
-                                <strong>Email:</strong> sank4patil@gmail.com
-                            </li>
-                            <li>
-                                <img src={Img1} alt="Phone" />
-                                <strong>Phone:</strong> +91 7249774554
-                            </li>
-                            <li>
-                                <img src={Img2} alt="Address" />
-                                <strong>Address:</strong> Mahrashtra,Sindhudurg
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div className="contact_content">
+          <form ref={formRef} className="contact_form" onSubmit={handleSubmit}>
+            <div className="form_group">
+              <input 
+                type="text" 
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name" 
+                required 
+              />
             </div>
-        </section>
-    );
+            <div className="form_group">
+              <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email" 
+                required 
+              />
+            </div>
+            <div className="form_group">
+              <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message" 
+                rows="5" 
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className={`button ${sent ? 'sent' : ''}`}>
+              <span className="button_content">
+                {!sent ? (
+                  <>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Send Message
+                  </>
+                ) : (
+                  <>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Message Sent!
+                  </>
+                )}
+              </span>
+            </button>
+          </form>
+
+          <div className="contact_info">
+            <h2>Get in Touch</h2>
+            <p>If you prefer, you can also reach me through the information below.</p>
+            <ul>
+              <li><strong>Email:</strong> yourname@example.com</li>
+              <li><strong>Phone:</strong> +123 456 7890</li>
+              <li><strong>Location:</strong> Your City, Country</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;

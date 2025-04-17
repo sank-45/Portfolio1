@@ -1,71 +1,235 @@
 @import '../../Styles/Mixins.scss';
 
 .hero {
-    margin-top: 4.5rem;
-    height: 100vh; // Full screen height
-    width: 100%; // Full screen width
-    background-image: url("../../Component/Assets/hero-bg.jpg");
-    background-size: cover; // Ensure the image covers the entire screen
-    background-position: center; // Center the image
-    background-repeat: no-repeat; // Prevent the image from repeating
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin-top: 4.5rem;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  &_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
+
+  &_left {
+    padding-block: 5rem;
+  }
+
+  h3 {
+    color: #facc15;
+    font-size: 3rem;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 7.5rem;
+    font-weight: 550;
+    line-height: 1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    @include respond(phone) {
+      font-size: 5rem;
+    }
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--extra-white);
+    margin-block: 2rem;
+  }
+
+  spam {
+    color: #facc15;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  &_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @include respond(tab-port) {
+      display: none;
+    }
+  }
+
+  .hero-right-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      scale: 1.5;
+      width: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      justify-content: center;
+      max-width: 450px;
+      max-height: 400px;
+    }
+  }
+
+  // 🔥 Hire Me Button Section
+  .btn-container {
+    margin-top: 2rem;
+
+    .liquid-btn {
+      position: relative;
+      background-color: #000;
+      border: 1px solid blue;
+      outline: 0;
+      color: #fff;
+      width: 200px;
+      padding: 20px;
+      border-radius: 50px;
+      overflow: hidden;
+      cursor: pointer;
+      font-size: 1rem;
+      z-index: 1;
+      box-shadow: 0 1px 2px white;
+
+      .liquid {
+        width: 200px;
+        height: 70px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        box-shadow: inset 5px -5px 25px darken(#2893eb, 20%),
+          inset -5px 0px 25px darken(#2893eb, 20%);
+
+        &::after {
+          content: '';
+          width: 450px;
+          height: 400px;
+          background: #000;
+          z-index: 1;
+          position: absolute;
+          left: -110px;
+          top: -380px;
+          border-radius: 45%;
+          animation: animate 5s linear 2s infinite;
+        }
+
+        &::before {
+          content: '';
+          width: 450px;
+          height: 400px;
+          background-color: var(--extra-color);
+          z-index: 1;
+          position: absolute;
+          left: -110px;
+          top: -380px;
+          border-radius: 40%;
+          animation: animate 5s linear 1.8s infinite;
+        }
+      }
+
+      .btn-text {
+        position: relative;
+        z-index: 2;
+        font-size: 1rem;
+        font-family: sans-serif;
+        letter-spacing: 2px;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+
+  // Responsive Right Image
+  &__right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease-in-out;
+  }
+
+  &__right-img {
+    width: 100%;
+    max-width: 300px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0px 2px 4px rgba(251, 249, 249, 0.3);
+    }
+  }
+
+  // Responsive tweaks
+  @include respond(tab-port) {
     &_container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        gap: 4rem;
-        width: 100%;
-        max-width: 1200px;
-        padding: 0 2rem;
+      flex-direction: column;
+      text-align: center;
     }
 
     &_left {
-        padding-block: 5rem;
-    }
-
-    h3 {
-        color: var(--extra-color);
-        font-size: 2rem;
-        font-weight: 300;
-     
-        
+      padding-block: 2rem;
     }
 
     h1 {
-        font-size: 7.5rem;
-        font-weight: 700;
-        line-height: 1;
-
-        @include respond(phone) {
-            font-size: 5rem;
-        }
+      font-size: 3rem;
     }
 
     h2 {
-        font-size: 2.5rem;
-        font-weight: 300;
-        color: var(--m-silver);
-        margin-block: 2rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  @include respond(phone) {
+    h1 {
+      font-size: 5rem;
     }
 
-    &_right {
-        overflow: hidden;
-        position: relative;
-
-        @include respond(tab-port) {
-            display: none;
-        }
+    h2 {
+      font-size: 1.2rem;
     }
 
-    &_right-img {
-        display: grid;
+    &__right-img {
+      max-width: 200px;
     }
+  }
+}
 
-    &__right-img img {
-        width: 130%;
-        place-self: center;
-    }
+// Animation for wave motion
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  
 }

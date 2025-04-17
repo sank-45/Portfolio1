@@ -1,70 +1,67 @@
 import './Project.scss';
-import Project1 from '../../Component/Assets/Project1.jpeg'; // Replace with your project images
-import Project2 from '../../Component/Assets/project2.jpeg';
-import Project3 from '../../Component/Assets/project3.jpeg';
-// import Project4 from '../../Component/Assets/client1.png';
+import Project1 from '../../Component/Assets/Project1.png';
+import Project2 from '../../Component/Assets/Project2.png';
+import Project3 from '../../Component/Assets/Project3.png';
+import { motion } from 'framer-motion';
 
 const Projects = () => {
     const projects = [
         {
             id: 1,
-            title: "Project 1",
-            description: "shrikrishna Arogyam massage therapy.",
+            title: "Portfolio Website",
+            description: "A personal portfolio website built with React and SCSS showcasing my skills, projects, and contact info.",
             image: Project1,
-            link: "#",
-            technologies: ["React", "SCSS", "Vite"],
+            link: "",
         },
         {
             id: 2,
-            title: "Project 2",
-            description: "TripZip Travel Agency.",
+            title: "ShrikrishnaArogyam - Wellness Website",
+            description: "A clean and calming website built for a massage therapy center to showcase their services, promote health and wellness, and enable client inquiries.",
             image: Project2,
-            link: "#",
-            technologies: ["Html", "Css", "JavaScript"],
+            link: "https://shrikrishnaarogyammassagetherapy.com/",
         },
         {
             id: 3,
-            title: "Project 3",
-            description: "Aashram",
+            title: "ERP System - Nebula Technology",
+            description: "A custom-built ERP platform developed for Nebula Technology to manage internal operations like HR, inventory, billing, and reporting with role-based access and real-time dashboards.",
             image: Project3,
-            link: "#",
-            technologies: ["HTML", "CSS", "JavaScript"],
+            link: "https://nebula-technology.com/",
         },
-        // {
-        //     id: 4,
-        //     title: "Project 4",
-        //     description: "A blog platform with user authentication.",
-        //     image: Project4,
-        //     link: "#",
-        //     technologies: ["React", "Firebase", "Tailwind CSS"],
-        // },
     ];
 
     return (
         <section className="projects">
             <div className="projects_container wrapper">
-                <h1>My Projects</h1>
-                <p>Here are some of the projects I've worked on. Click on a project to learn more.</p>
+                <motion.h1
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                >
+                    My Projects
+                </motion.h1>
 
                 <div className="projects_grid">
-                    {projects.map((project) => (
-                        <div className="project_card" key={project.id}>
+                    {projects.map((project, index) => (
+                        <motion.div
+                            className="project_card"
+                            key={project.id}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            whileHover={{ scale: 1.03 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <div className="project_image">
                                 <img src={project.image} alt={project.title} />
                                 <div className="project_overlay">
                                     <h3>{project.title}</h3>
                                     <p>{project.description}</p>
-                                    <div className="project_technologies">
-                                        {project.technologies.map((tech, index) => (
-                                            <span key={index}>{tech}</span>
-                                        ))}
-                                    </div>
-                                    {/* <a href={project.link} className="project_button">
+                                    <a href={project.link} className="project_button">
                                         View Project
-                                    </a> */}
+                                    </a>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

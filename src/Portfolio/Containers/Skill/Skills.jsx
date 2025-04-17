@@ -1,80 +1,105 @@
-import React from "react";
-import "./Skills.scss";
-import { motion } from "framer-motion";
-
-const skillsData = {
-  frontend: [
-    { name: "HTML & CSS", level: "95%" },
-    { name: "JavaScript", level: "90%" },
-    { name: "React.js", level: "85%" },
-    { name: "SCSS", level: "80%" },
-  ],
-  backend: [
-    { name: "Java", level: "85%" },
-    { name: "Jdbc", level: "80%" },
-    { name: "Hibernate", level: "75%" },
-    { name: "SpringBoot", level: "70%" },
-  ],
-  tools: [
-    { name: "Git & GitHub", level: "90%" },
-    { name: "Eclipse", level: "70%" },
-    { name: "VsCode", level: "75%" },
-    { name: "MySqlWorkbench", level: "80%" },
-  ],
-};
+import React from 'react';
+import './Skills.scss';
+import { motion } from 'framer-motion';
 
 const Skills = () => {
+  const skillsData = [
+    {
+      name: 'HTML/CSS',
+      icon: 'fab fa-html5',
+      description: 'Semantic HTML, CSS3, Flexbox, Grid, responsive design'
+    },
+    {
+      name: 'JavaScript',
+      icon: 'fab fa-js',
+      description: 'ES6+ features, async programming, DOM manipulation'
+    },
+    {
+      name: 'React',
+      icon: 'fab fa-react',
+      description: 'Building interactive UIs with components and hooks'
+    },
+    
+    
+    {
+      name: 'SCSS',
+      icon: 'fab fa-sass',
+      description: 'CSS preprocessing with variables, mixins, and nesting'
+    },
+    {
+      name: 'Java',
+      icon: 'fab fa-java',
+      description: 'Object-oriented programming, collections, multithreading'
+    },
+    {
+      name: 'Spring Boot',
+      icon: 'fas fa-leaf',
+      description: 'Creating REST APIs with Spring framework'
+    },
+    {
+      name: 'Hibernate',
+      icon: 'fas fa-database',
+      description: 'ORM implementation and JPA specifications'
+    },
+    {
+      name: 'JSP',
+      icon: 'fas fa-file-code',
+      description: 'JavaServer Pages for dynamic web content'
+    },
+    {
+      name: 'JDBC',
+      icon: 'fas fa-server',
+      description: 'Database connectivity and operations'
+    },
+    {
+      name: 'MySQL',
+      icon: 'fas fa-database',
+      description: 'Database design, queries, and optimization'
+    }
+  ];
+
   return (
-    <div className="skills-container">
-      <motion.h2 
-        className="title"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+    <section className="skills-section" id="skills">
+      <motion.h2
+        className="section-title"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
       >
-        SKILLS
+        Technical Skills
       </motion.h2>
 
-      <motion.p 
-        className="description"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+      <motion.p
+        className="section-subtitle"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
       >
-        As a Full Stack Developer, I have expertise in various technologies.
+        Technologies I work with
       </motion.p>
 
-      <div className="skills-grid">
-        {Object.entries(skillsData).map(([category, skills]) => (
-          <motion.div 
-            key={category} 
+      <div className="skills-container">
+        {skillsData.map((skill, index) => (
+          <motion.div
+            key={index}
             className="skill-card"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, staggerChildren: 0.3 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.05 }}
+            viewport={{ once: true }}
           >
-            <h3 className="category-title">{category.toUpperCase()}</h3>
-            <div className="skills-list">
-              {skills.map((skill, idx) => (
-                <div className="skill" key={idx}>
-                  <span className="skill-name">{skill.name}</span>
-                  <div className="skill-bar">
-                    <motion.div 
-                      className="skill-progress" 
-                      style={{ width: skill.level }}
-                      initial={{ width: "0%" }}
-                      animate={{ width: skill.level }}
-                      transition={{ duration: 1 }}
-                    ></motion.div>
-                  </div>
-                  <span className="skill-level">{skill.level}</span>
-                </div>
-              ))}
+            <div className="skill-icon">
+              <i className={skill.icon}></i>
             </div>
+            <h3 className="skill-title">{skill.name}</h3>
+            <p className="skill-description">{skill.description}</p>
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

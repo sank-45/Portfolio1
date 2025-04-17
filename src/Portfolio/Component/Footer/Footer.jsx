@@ -13,13 +13,13 @@ const Footer = () => {
 
                 {/* Social Media Links */}
                 <div className="footer_social">
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/sankalp-patil-54041b300/" target="_blank" rel="noopener noreferrer">
                         <FaLinkedin className="social-icon" />
                     </a>
-                    <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/sank-45" target="_blank" rel="noopener noreferrer">
                         <FaGithub className="social-icon" />
                     </a>
-                    <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/sank______45/" target="_blank" rel="noopener noreferrer">
                         <FaInstagram className="social-icon" />
                     </a>
                     <a href="mailto:example@example.com">
@@ -30,7 +30,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="footer_bottom">
-                <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Sankalp❤️. All rights reserved.</p>
             </div>
         </footer>
     );
