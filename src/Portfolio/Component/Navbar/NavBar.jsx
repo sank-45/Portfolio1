@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Navbar.scss';
+import './NavBar.scss';
 import Logo from "../../Component/Assets/logo1.png";
 import { FaPhoneAlt } from 'react-icons/fa';
 import { IoMenuSharp } from "react-icons/io5";
