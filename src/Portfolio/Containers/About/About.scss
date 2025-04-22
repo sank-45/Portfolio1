@@ -1,11 +1,11 @@
-// @import '../../Styles/Mixins.scss';
-@import '../../Styles/Variables.scss';
 @import '../../Styles/Mixins.scss';
+@import '../../Styles/Variables.scss';
 
 .about {
     padding: 8rem 0;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+    overflow: hidden; // Prevent scroll jumps
 
     &_container {
         display: flex;
@@ -14,6 +14,13 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 2rem;
+        opacity: 0; // Start hidden
+        animation: fadeSlideUp 1.2s ease forwards; // Use forwards to maintain final state
+
+        &:hover {
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
 
         @include respond(tab-port) {
             flex-direction: column;
@@ -32,18 +39,21 @@
             position: relative;
             display: inline-block;
             letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeSlideUp 1s 0.3s ease forwards; // Delayed start
 
-    &::after {
-        content: '';
-        position: absolute;
-        width: 70%;
-        height: 3px;
-        background: #f59e0b;
-        bottom: -10px;
-        left: 15%;
-        border-radius: 5px;
-        margin-bottom: 0.5rem;
-      }
+            &::after {
+                content: '';
+                position: absolute;
+                width: 0; // Start at 0
+                height: 3px;
+                background: linear-gradient(to right, #facc15, #f59e0b);
+                bottom: -1px;
+                left: 0;
+                margin-left: 1.3rem;
+                border-radius: 10px;
+                animation: underlineGrow 0.8s 1.3s ease-out forwards; // Delayed start
+            }
 
             @include respond(tab-port) {
                 font-size: 2.5rem;
@@ -55,7 +65,15 @@
             line-height: 1.8;
             margin-bottom: 1.5rem;
             color: var(--main-text-color);
-            animation: fadeInUp 1s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            
+            // Staggered animations
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i + 1}) {
+                    animation: fadeInUp 0.8s #{0.5 + ($i * 0.2)}s ease forwards;
+                }
+            }
 
             @include respond(tab-port) {
                 font-size: 1rem;
@@ -73,7 +91,8 @@
             position: relative;
             display: inline-block;
             margin-top: 1rem;
-            animation: fadeInUp 1.5s ease;
+            opacity: 0;
+            animation: fadeInUp 1s 1.5s ease forwards;
 
             &::before,
             &::after {
@@ -121,17 +140,18 @@
     &_image {
         flex: 1;
         text-align: center;
-        animation: fadeInRight 1s ease;
+        opacity: 0;
+        animation: fadeInRight 1s 0.5s ease forwards;
 
         .profile_img {
             max-width: 90%;
             height: auto;
             border-radius: 10px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
             &:hover {
-                transform: scale(1.05);
+                transform: scale(1.05) rotate(2deg);
             }
 
             @include respond(tab-port) {
@@ -172,5 +192,25 @@
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes underlineGrow {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 70%;
     }
 }
