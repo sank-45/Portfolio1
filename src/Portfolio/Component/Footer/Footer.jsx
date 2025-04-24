@@ -30,7 +30,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="footer_bottom">
-                <p>&copy; {new Date().getFullYear()} Sankalp❤️. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Sankalp. All rights reserved.</p>
             </div>
         </footer>
     );

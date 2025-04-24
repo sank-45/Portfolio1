@@ -111,9 +111,9 @@ const Contact = () => {
             <h2>Get in Touch</h2>
             <p>If you prefer, you can also reach me through the information below.</p>
             <ul>
-              <li><strong>Email:</strong> yourname@example.com</li>
-              <li><strong>Phone:</strong> +123 456 7890</li>
-              <li><strong>Location:</strong> Your City, Country</li>
+              <li><strong>Email:</strong> sank4patil.com</li>
+              <li><strong>Phone:</strong> +91 7249774554</li>
+              <li><strong>Location:</strong> Sawantwadi</li>
             </ul>
           </div>
         </div>

@@ -6,6 +6,7 @@
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
     overflow: hidden; // Prevent scroll jumps
+    position: relative; // Relative to its normal position in the flow
 
     &_container {
         display: flex;
@@ -31,6 +32,7 @@
 
     &_content {
         flex: 1;
+        animation: fadeSlideUp 1s 0.3s ease forwards;
 
         h1 {
             font-size: 3.5rem;
@@ -159,58 +161,114 @@
             }
         }
     }
-}
 
-// Keyframe Animations
-@keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
+    // Keyframe Animations
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(20px);
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
-@keyframes fadeSlideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
+    @keyframes fadeSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-@keyframes underlineGrow {
-    0% {
-        width: 0;
+    @keyframes underlineGrow {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 70%;
+        }
     }
-    100% {
-        width: 70%;
+
+    // Media Queries for Mobile Responsiveness
+    @media (max-width: 768px) {
+        .about {
+            padding: 5rem 0;
+        }
+
+        .about_container {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .about_content {
+            text-align: center;
+        }
+
+        .profile_img {
+            max-width: 100%;
+        }
+
+        .button {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    // Extra small screen adjustments (Mobile)
+    @media (max-width: 480px) {
+        .about {
+            padding: 3rem 0;
+        }
+
+        .about_container {
+            padding: 0 1rem;
+        }
+
+        .button {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+        }
     }
 }
