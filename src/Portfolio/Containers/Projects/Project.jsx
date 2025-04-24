@@ -1,7 +1,7 @@
 import './Project.scss';
-import Project1 from '../../Component/Assets/Project1.png';
-import Project2 from '../../Component/Assets/Project2.png';
-import Project3 from '../../Component/Assets/Project3.png';
+import Project1 from '../../Component/Assets/Project1.jpg';
+import Project2 from '../../Component/Assets/Project2.jpg';
+import Project3 from '../../Component/Assets/Project3.jpg';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
