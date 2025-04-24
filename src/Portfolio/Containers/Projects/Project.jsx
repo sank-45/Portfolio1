@@ -11,7 +11,7 @@ const Projects = () => {
             title: "Portfolio Website",
             description: "A personal portfolio website built with React and SCSS showcasing my skills, projects, and contact info.",
             image: Project1,
-            link: "",
+            link: "https://sankalppatil-portfolio.netlify.app/",
         },
         {
             id: 2,
