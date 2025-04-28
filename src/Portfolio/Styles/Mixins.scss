@@ -1,19 +1,25 @@
-// Define common breakpoints
+// Define your breakpoints map first
 $breakpoints: (
-  "phone": 480px,
-  "tab-port": 768px,
-  "tab-land": 1024px,
-  "desktop": 1200px
+  'phone': 480px,
+  'tab-port': 768px,
+  'tab-land': 1024px,
+  'desktop': 1200px,
+  'big-desktop': 1800px
 );
 
-// Usage: @include respond(tab-port) { ... }
+// Respond mixin for media queries
 @mixin respond($breakpoint) {
+  // Check if the breakpoint exists in the map
   @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value
     $size: map-get($breakpoints, $breakpoint);
-    @media screen and (max-width: $size) {
+    
+    // Write the media query
+    @media only screen and (max-width: $size) {
       @content;
     }
   } @else {
-    @warn "No value found for `#{$breakpoint}` in the \$breakpoints map.";
+    // Warn if the breakpoint doesn't exist
+    @warn "Unknown breakpoint `#{$breakpoint}`. Available breakpoints: #{map-keys($breakpoints)}";
   }
 }
