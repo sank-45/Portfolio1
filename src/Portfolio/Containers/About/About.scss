@@ -2,273 +2,228 @@
 @import '../../Styles/Variables.scss';
 
 .about {
-    padding: 8rem 0;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-    overflow: hidden; // Prevent scroll jumps
-    position: relative; // Relative to its normal position in the flow
+  padding: 8rem 0;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  overflow: hidden;
+  position: relative;
+
+  &_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+
+    &:hover {
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
+
+  &_content {
+    animation: fadeSlideUp 1s 0.3s ease forwards;
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: #facc15;
+      position: relative;
+      display: inline-block;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeSlideUp 1s 0.3s ease forwards;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(to right, #facc15, #f59e0b);
+        bottom: -1px;
+        left: 0;
+        margin-left: 1.3rem;
+        border-radius: 10px;
+        animation: underlineGrow 0.8s 1s ease-out forwards;
+      }
+
+      @include respond(tab-port) {
+        font-size: 2.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: var(--main-text-color);
+      opacity: 0;
+      transform: translateY(20px);
+      
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i + 1}) {
+          animation: fadeInUp 0.8s #{0.5 + ($i * 0.2)}s ease forwards;
+        }
+      }
+
+      @include respond(tab-port) {
+        font-size: 1rem;
+      }
+    }
+
+    .button {
+      pointer-events: auto;
+      cursor: pointer;
+      background: #e7e7e7;
+      border: none;
+      padding: 1rem 2rem;
+      font-family: inherit;
+      font-size: 1rem;
+      position: relative;
+      display: inline-block;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeInUp 1s 1.5s ease forwards;
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      &--pan {
+        font-family: aktiv-grotesk-extended, sans-serif;
+        font-weight: 500;
+        border: 2px solid #dfd0d0;
+        border-radius: 3rem;
+        overflow: hidden;
+        color: #fff;
+        background-color: transparent;
+        z-index: 1;
+
+        span {
+          position: relative;
+          mix-blend-mode: difference;
+          z-index: 2;
+        }
+
+        &::before {
+          content: "";
+          background: #f4f3f3;
+          transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+          z-index: 0;
+        }
+
+        &:hover::before {
+          transform: translate3d(0, -100%, 0);
+        }
+      }
+
+      @include respond(tab-port) {
+        width: 100%;
+      }
+    }
+  }
+
+  &_image {
+    text-align: center;
+    opacity: 0;
+    animation: fadeInRight 1s 0.5s ease forwards;
+
+    .profile_img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      &:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+
+      @include respond(tab-port) {
+        max-width: 80%;
+      }
+    }
+  }
+
+  // Keyframe Animations
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes underlineGrow {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 70%;
+    }
+  }
+
+  // Responsive adjustments
+  @include respond(tab-port) {
+    padding: 5rem 0;
 
     &_container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        gap: 4rem;
-        // width: 100%;
-        max-width: 1200px;
-        padding: 0 2rem;
-        position: relative;
-        z-index: 2;
-        &:hover {
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-        }
-
-        @include respond(tab-port) {
-            flex-direction: column;
-            text-align: center;
-            gap: 2rem;
-        }
+      padding: 0 1rem;
     }
+  }
 
-    &_content {
-        flex: 1;
-        animation: fadeSlideUp 1s 0.3s ease forwards;
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #facc15;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 1px;
-            opacity: 0;
-            animation: fadeSlideUp 1s 0.3s ease forwards; // Delayed start
-
-            &::after {
-                content: '';
-                position: absolute;
-                width: 0; // Start at 0
-                height: 3px;
-                background: linear-gradient(to right, #facc15, #f59e0b);
-                bottom: -1px;
-                left: 0;
-                margin-left: 1.3rem;
-                border-radius: 10px;
-                animation: underlineGrow 0.8s 1s ease-out forwards; // Delayed start
-            }
-
-            @include respond(tab-port) {
-                font-size: 2.5rem;
-            }
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--main-text-color);
-            opacity: 0;
-            transform: translateY(20px);
-            
-            // Staggered animations
-            @for $i from 1 through 4 {
-                &:nth-child(#{$i + 1}) {
-                    animation: fadeInUp 0.8s #{0.5 + ($i * 0.2)}s ease forwards;
-                }
-            }
-
-            @include respond(tab-port) {
-                font-size: 1rem;
-            }
-        }
-
-        .button {
-            pointer-events: auto;
-            cursor: pointer;
-            background: #e7e7e7;
-            border: none;
-            padding: 1rem 2rem;
-            font-family: inherit;
-            font-size: 1rem;
-            position: relative;
-            display: inline-block;
-            margin-top: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s 1.5s ease forwards;
-
-            &::before,
-            &::after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-
-            &--pan {
-                font-family: aktiv-grotesk-extended, sans-serif;
-                font-weight: 500;
-                border: 2px solid #dfd0d0;
-                border-radius: 3rem;
-                overflow: hidden;
-                color: #fff;
-                background-color: transparent;
-                z-index: 1;
-
-                span {
-                    position: relative;
-                    mix-blend-mode: difference;
-                    z-index: 2;
-                }
-
-                &::before {
-                    content: "";
-                    background: #f4f3f3;
-                    transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
-                    z-index: 0;
-                }
-
-                &:hover::before {
-                    transform: translate3d(0, -100%, 0);
-                }
-            }
-
-            @include respond(tab-port) {
-                width: 100%;
-            }
-        }
-    }
-
-    &_image {
-        flex: 1;
-        text-align: center;
-        opacity: 0;
-        animation: fadeInRight 1s 0.5s ease forwards;
-
-        .profile_img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-            &:hover {
-                transform: scale(1.05) rotate(2deg);
-            }
-
-            @include respond(tab-port) {
-                max-width: 80%;
-            }
-        }
-    }
-
-    // Keyframe Animations
-    @keyframes fadeInDown {
-        0% {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeInRight {
-        0% {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes fadeSlideUp {
-        0% {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes underlineGrow {
-        0% {
-            width: 0;
-        }
-        100% {
-            width: 70%;
-        }
-    }
-
-    // Media Queries for Mobile Responsiveness
-    @media (max-width: 768px) {
-        .about {
-            padding: 5rem 0;
-        }
-
-        .about_container {
-            flex-direction: column;
-            gap: 2rem;
-            padding: 0 1rem;
-        }
-
-        .about_content {
-            text-align: center;
-        }
-
-        .profile_img {
-            max-width: 100%;
-        }
-
-        .button {
-            width: 100%;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        p {
-            font-size: 1rem;
-        }
-    }
-
-    // Extra small screen adjustments (Mobile)
-    @media (max-width: 480px) {
-        .about {
-            padding: 3rem 0;
-        }
-
-        .about_container {
-            padding: 0 1rem;
-        }
-
-        .button {
-            padding: 1rem;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-        }
-
-        p {
-            font-size: 0.95rem;
-        }
-    }
+  @include respond(phone) {
+    padding: 3rem 0;
+  }
 }
