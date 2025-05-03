@@ -1,5 +1,5 @@
 import './About.scss';
-import ProfileImage from '../../Component/Assets/Hero112-bg.png'; // Replace with your image
+import ProfileImage from '../../Component/Assets/HeroNew4.png'; // Replace with your image
 
 const About = () => {
     return (
