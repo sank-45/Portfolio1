@@ -1,7 +1,7 @@
 import './Project.scss';
 import Project1 from '../../Component/Assets/Project1.jpg';
-import Project2 from '../../Component/Assets/Project2.jpg';
-import Project3 from '../../Component/Assets/Project3.jpg';
+import Project2 from '../../Component/Assets/project22.png';
+import Project3 from '../../Component/Assets/project33.png';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
@@ -15,17 +15,17 @@ const Projects = () => {
         },
         {
             id: 2,
-            title: "ShrikrishnaArogyam - Wellness Website",
-            description: "A clean and calming website built for a massage therapy center to showcase their services, promote health and wellness, and enable client inquiries.",
+            title: "Krushi-Udyog",
+            description: "The Krushi Udyog website is designed to support fertilizer shop owners by providing a digital storefront to manage inventory, engage with customers, and display their offerings in a professional and appealing manner.",
             image: Project2,
-            link: "https://shrikrishnaarogyammassagetherapy.com/",
+            // link: "https://shrikrishnaarogyammassagetherapy.com/",
         },
         {
             id: 3,
-            title: "ERP System - Nebula Technology",
-            description: "A custom-built ERP platform developed for Nebula Technology to manage internal operations like HR, inventory, billing, and reporting with role-based access and real-time dashboards.",
+            title: "Tripzip",
+            description: "Designed and developed TripZip, a comprehensive travel website featuring a streamlined booking system for hotels and flights worldwide.",
             image: Project3,
-            link: "https://nebula-technology.com/",
+            // link: "https://nebula-technology.com/",
         },
     ];
 
